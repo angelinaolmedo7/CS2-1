@@ -1,5 +1,6 @@
 #!python
 
+import sorting_iterative
 
 def merge(items1, items2):
     """Merge given lists of items, each assumed to already be in sorted order,
@@ -9,6 +10,17 @@ def merge(items1, items2):
     # TODO: Repeat until one list is empty
     # TODO: Find minimum item in both lists and append it to new list
     # TODO: Append remaining items in non-empty list to new list
+    
+    newlist = []
+    while len(items1) > 0 and len(items2) > 0:
+        if items1[0] < items2[0]:
+            newlist.append(items1.pop(0))
+        else: 
+            newlist.append(items2.pop(0))
+    newlist.extend(items1)
+    newlist.extend(items2)
+
+    return newlist
 
 
 def split_sort_merge(items):
@@ -20,6 +32,26 @@ def split_sort_merge(items):
     # TODO: Split items list into approximately equal halves
     # TODO: Sort each half using any other sorting algorithm
     # TODO: Merge sorted halves into one list in sorted order
+
+    print("items:")
+    print(items)
+
+    # how long is half the list?
+    half = len(items)//2
+    if half == 0: # len is 0 or 1
+        return items 
+
+    # split list in two
+    first_half = items[:half]
+    second_half = items[half:]
+
+    # sort w/ imported selection sort
+    sorting_iterative.selection_sort(first_half)
+    sorting_iterative.selection_sort(second_half)
+
+    # merge them back together and assign to items
+    items = merge(first_half, second_half)
+    print(items)
 
 
 def merge_sort(items):

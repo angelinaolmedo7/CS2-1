@@ -53,7 +53,7 @@ def selection_sort(items):
         items[start] = min
         items[min_ind] = hold
 
-        print(items)
+        # print(items)
 
         start += 1
 
