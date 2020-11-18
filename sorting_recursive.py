@@ -33,9 +33,6 @@ def split_sort_merge(items):
     # TODO: Sort each half using any other sorting algorithm
     # TODO: Merge sorted halves into one list in sorted order
 
-    print("items:")
-    print(items)
-
     # how long is half the list?
     half = len(items)//2
     if half == 0: # len is 0 or 1
@@ -50,8 +47,7 @@ def split_sort_merge(items):
     sorting_iterative.selection_sort(second_half)
 
     # merge them back together and assign to items
-    items = merge(first_half, second_half)
-    print(items)
+    items[:] = merge(first_half, second_half)
 
 
 def merge_sort(items):
@@ -63,6 +59,17 @@ def merge_sort(items):
     # TODO: Split items list into approximately equal halves
     # TODO: Sort each half by recursively calling merge sort
     # TODO: Merge sorted halves into one list in sorted order
+
+    if len(items) <= 1:
+        return(items)
+    half = len(items)//2
+    first_half = items[:half]
+    second_half = items[half:]
+
+    merge_sort(first_half)
+    merge_sort(second_half)
+
+    items[:] = merge(first_half, second_half)
 
 
 def partition(items, low, high):
@@ -89,3 +96,6 @@ def quick_sort(items, low=None, high=None):
     # TODO: Check if list or range is so small it's already sorted (base case)
     # TODO: Partition items in-place around a pivot and get index of pivot
     # TODO: Sort each sublist range by recursively calling quick sort
+
+if __name__ == "__main__":
+    pass

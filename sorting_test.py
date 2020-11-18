@@ -165,7 +165,6 @@ class StringSortTest(unittest.TestCase):
         assert items1 == ['A']  # List should not be changed
         items2 = ['B', 'A']
         sort(items2)
-        print(str(items2) + " comparing to ['A', 'B']")
         assert items2 == ['A', 'B']  # List should be in sorted order
         items3 = ['B', 'C', 'A']
         sort(items3)
@@ -216,7 +215,7 @@ def get_sort_function():
 
 
 # If using PyTest, change this variable to the sort function you want to test
-sort = split_sort_merge
+sort = merge_sort
 
 
 if __name__ == '__main__':
