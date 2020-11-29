@@ -6,10 +6,37 @@ def counting_sort(numbers):
     then looping over counts and copying that many numbers into output list.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
+
     # TODO: Find range of given numbers (minimum and maximum integer values)
+    # am I allowed to use .min()/.max()?
+    if len(numbers) == 0:
+        return 
+
+    mn = numbers[0]
+    mx = numbers[0]
+
+    for num in numbers:
+        if num < mn:
+            mn = num
+        if num > mx:
+            mx = num
+
     # TODO: Create list of counts with a slot for each number in input range
+    counts = [0]
+    for _ in range(mn, mx):
+        counts.append(0)
+
     # TODO: Loop over given numbers and increment each number's count
+    for num in numbers:
+        counts[num-mn] += 1
+
     # TODO: Loop over counts and append that many numbers into output list
+    output = []
+    for i in range(len(counts)):
+        for _ in range(counts[i]):
+            output.append(mn+i)
+
+    numbers[:] = output
     # FIXME: Improve this to mutate input instead of creating new output list
 
 
