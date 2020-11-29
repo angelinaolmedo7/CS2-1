@@ -80,10 +80,26 @@ def partition(items, low, high):
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
     # TODO: Choose a pivot any way and document your method in docstring above
+    # pivot is gonna be the last index. p is then len(items[low:high])-1
+
+    pivot = items[high]
+    p = high
+
     # TODO: Loop through all items in range [low...high]
     # TODO: Move items less than pivot into front of range [low...p-1]
     # TODO: Move items greater than pivot into back of range [p+1...high]
+    # print(items)
+    for i in range(low, high):
+        if items[i] <= pivot:
+            items.insert(low, items.pop(i))
+            low += 1
+        else:
+            items.insert(low, items.pop(i))
+
     # TODO: Move pivot item into final position [p] and return index p
+    items.insert(low, items.pop(p))
+    return low
+
 
 
 def quick_sort(items, low=None, high=None):
@@ -93,9 +109,21 @@ def quick_sort(items, low=None, high=None):
     TODO: Worst case running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
     # TODO: Check if high and low range bounds have default values (not given)
+    if low == None or high == None:
+        low = 0
+        high = len(items)-1
+            
     # TODO: Check if list or range is so small it's already sorted (base case)
-    # TODO: Partition items in-place around a pivot and get index of pivot
-    # TODO: Sort each sublist range by recursively calling quick sort
+    if low >= high:
+        pass # small enough, could combine w/ next statement but will leave for clarity
+
+    else: 
+        # TODO: Partition items in-place around a pivot and get index of pivot
+        p = partition(items, low, high)
+
+        # TODO: Sort each sublist range by recursively calling quick sort
+        quick_sort(items, low, p-1)
+        quick_sort(items, p, high)
 
 if __name__ == "__main__":
     pass
