@@ -8,7 +8,7 @@ def counting_sort(numbers):
     TODO: Memory usage: ??? Why and under what conditions?"""
 
     # TODO: Find range of given numbers (minimum and maximum integer values)
-    # am I allowed to use .min()/.max()?
+    # am I allowed to use min()/max()?
     if len(numbers) == 0:
         return 
 
@@ -46,8 +46,29 @@ def bucket_sort(numbers, num_buckets=10):
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
     # TODO: Find range of given numbers (minimum and maximum values)
+    if len(numbers) == 0:
+        return 
+
+    mx = max(numbers)
+
     # TODO: Create list of buckets to store numbers in subranges of input range
+    buckets = [[] * num_buckets]
+    print(buckets)
+
+
     # TODO: Loop over given numbers and place each item in appropriate bucket
+    for num in numbers:
+        print(str(num * len(buckets) // (mx + 1)))
+        buckets[num * len(buckets) // (mx + 1)].append(num)
+
+
+
     # TODO: Sort each bucket using any sorting algorithm (recursive or another)
     # TODO: Loop over buckets and append each bucket's numbers into output list
+    output = []
+    for bucket in buckets:
+        counting_sort(bucket)
+        output.extend(bucket)
+
+    numbers[:] = output
     # FIXME: Improve this to mutate input instead of creating new output list
