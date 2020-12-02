@@ -4,8 +4,8 @@
 def counting_sort(numbers):
     """Sort given numbers (integers) by counting occurrences of each number,
     then looping over counts and copying that many numbers into output list.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    TODO: Running time: O(n+k)
+    TODO: Memory usage: O(k) """
 
     # TODO: Find range of given numbers (minimum and maximum integer values)
     # am I allowed to use min()/max()?
@@ -43,8 +43,8 @@ def counting_sort(numbers):
 def bucket_sort(numbers, num_buckets=10):
     """Sort given numbers by distributing into buckets representing subranges,
     then sorting each bucket and concatenating all buckets in sorted order.
-    TODO: Running time: ??? Why and under what conditions?
-    TODO: Memory usage: ??? Why and under what conditions?"""
+    TODO: Running time: Best/Avg: O(n+k), Worst: O(n^2)
+    TODO: Memory usage: O(n)"""
     # TODO: Find range of given numbers (minimum and maximum values)
     if len(numbers) == 0:
         return 
