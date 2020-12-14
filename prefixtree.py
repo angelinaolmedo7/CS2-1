@@ -114,11 +114,9 @@ class PrefixTree:
         if node is None:
             node = self.root
 
-        return_list = []
-        if node.is_terminal():
-            return_list.append(previous + node.character)
         for child in node.children:
-            return_list.extend(self._traverse(child, previous+node.character, visit))
+            self._traverse(child, previous+node.character, visit)
+            
         visit(node)
             
 
